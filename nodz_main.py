@@ -1653,7 +1653,8 @@ class PlugItem(SlotItem):
         """
         self.brush = QtGui.QBrush()
         self.brush.setStyle(QtCore.Qt.SolidPattern)
-        self.brush.setColor(utils._convertDataToColor(config[self.preset]['plug']))
+        self.brush.setColor(
+             utils._convertDataToColor(config['data_type_color'][self.dataType.__name__]))
 
     def boundingRect(self):
         """
@@ -1762,8 +1763,8 @@ class SocketItem(SlotItem):
         """
         self.brush = QtGui.QBrush()
         self.brush.setStyle(QtCore.Qt.SolidPattern)
-        self.brush.setColor(utils._convertDataToColor(config[self.preset]['socket']))
-
+        self.brush.setColor(
+            utils._convertDataToColor(config['data_type_color'][self.dataType.__name__]))
     def boundingRect(self):
         """
         The bounding rect based on the width and height variables.
