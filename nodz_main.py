@@ -456,6 +456,7 @@ class Nodz(QtWidgets.QGraphicsView):
         self.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
         self.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
         self.rubberband = QtWidgets.QRubberBand(QtWidgets.QRubberBand.Rectangle, self)
+	self.setStyleSheet("background: rgb" + str(utils._convertDataToColor(config["scene_bg_color"]).getRgb()))
 
         # Setup scene.
         scene = NodeScene(self)
