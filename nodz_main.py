@@ -101,8 +101,7 @@ class Nodz(QtWidgets.QGraphicsView):
 
 
         # Drag view
-        elif (event.button() == QtCore.Qt.MiddleButton and
-              event.modifiers() == QtCore.Qt.AltModifier):
+        elif (event.button() == QtCore.Qt.MiddleButton):
             self.currentState = 'DRAG_VIEW'
             self.prevPos = event.pos()
             self.setCursor(QtCore.Qt.ClosedHandCursor)
@@ -297,6 +296,16 @@ class Nodz(QtWidgets.QGraphicsView):
 
         if event.key() == QtCore.Qt.Key_S:
             self._nodeSnap = True
+
+        if event.key() == QtCore.Qt.Key_W:
+            fileName,_ = QtWidgets.QFileDialog.getSaveFileName(self, "Save Graph")
+            if fileName:
+                self.saveGraph(filePath=fileName)
+
+        if event.key() == QtCore.Qt.Key_O:
+            fileName,_ = QtWidgets.QFileDialog.getOpenFileName(self, "Open a graph file")
+            if fileName:
+                self.loadGraph(filePath=fileName)
 
         # Emit signal.
         self.signal_KeyPressed.emit(event.key())
